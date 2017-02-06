@@ -1,0 +1,46 @@
+package han;
+/**
+ * 简单合一
+ */
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.util.List;
+
+public class miji {
+	public static void main(String[] args) {
+		BufferedReader bw =null;
+		PrintWriter pw =null;
+		try {
+			FileInputStream fis=new FileInputStream("C:/Users/hanjz/Desktop/aa/aaa.txt");
+			FileOutputStream fos=new FileOutputStream("C:/Users/hanjz/Desktop/bb.txt");
+			bw=new BufferedReader(new InputStreamReader(fis,"utf-8"));
+			pw=new PrintWriter(new OutputStreamWriter(fos),true);
+			String str=null;
+			//StringBuilder st=new StringBuilder(str);
+			while((str=bw.readLine())!=null){
+				if(str.trim().endsWith("的实体类")){
+					pw.println(str);
+					System.out.println(str);
+				}
+			}
+			System.out.println("ok");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			pw.close();
+			if(bw!=null){
+				try {
+					bw.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
+}
